@@ -14,8 +14,13 @@ struct TreeNode {
      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+void printQueue(queue<TreeNode*> q)
+{
 
-void invertTree(TreeNode* root) {
+}
+
+
+struct TreeNode* invertTree(TreeNode* root) {
     queue<TreeNode*> q;
     q.push(root);
     if(root == NULL){
@@ -23,19 +28,16 @@ void invertTree(TreeNode* root) {
     } else {
         while(!q.empty())
         {
-            if(root->left != NULL) q.push(root->left);
-            if(root->right != NULL) q.push(root->right); 
-            TreeNode* temp = root->left;
-            root->left = root->right;
-            root->right = temp;
-            cout << root->left->val << " and " << root->right->val << endl;
+            TreeNode* curr = q.front();
             q.pop();
-            root = q.front();
-            cout<< (root->right!=NULL ? root->right->val : -999) << endl;
-            cout << "empty: " << q.front()->val << endl;
+            if(curr->left != NULL) q.push(curr->left);
+            if(curr->right != NULL) q.push(curr->right);
+            TreeNode* temp = curr->left;
+            curr->left = curr->right;
+            curr->right = temp;
         };
-        cout << "end here" << endl;
     }
+    return root;
 
 };
 
@@ -71,13 +73,14 @@ int main()
     a->right = new TreeNode(15);
     a->left->left = new TreeNode(2);
     a->left->right = new TreeNode(5);
+    a->left->right->left = new TreeNode(1);
+    a->left->right->right = new TreeNode(3);
     a->right->left = new TreeNode(10);
     a->right->right = new TreeNode(18);
-    orderTraversal(a);
-    cout << endl;
-    invertTree(a);
-    cout << a->val << "ended";
-    cout << "done";
+    a->right->right->right = new TreeNode(20);
+    // orderTraversal(a);
+    TreeNode* b = invertTree(a);
+    orderTraversal(b);
 
     return 0;
 };
