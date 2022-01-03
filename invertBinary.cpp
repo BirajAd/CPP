@@ -55,14 +55,8 @@ void orderTraversal(TreeNode* n)
         TreeNode* curr = q.front();
         q.pop();
         cout << curr->val << ",";
-        if(curr->left != NULL)
-        {
-            q.push(curr->left);
-        }
-        if(curr->right != NULL)
-        {
-            q.push(curr->right);
-        }
+        if(curr->left != NULL) q.push(curr->left);
+        if(curr->right != NULL) q.push(curr->right);
     }
 }
 
