@@ -1,3 +1,6 @@
+// this problem is from stack overflow https://stackoverflow.com/questions/70868742/issues-with-2d-array-peaks-finder/70869494#70869494
+// and the answer from birajad is from me, I found this problem to be really interesting so I have saved it for myself.
+
 #include <stdio.h>
 #include <iostream>
 
