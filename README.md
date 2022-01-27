@@ -1,3 +1,6 @@
 # CPP
 
-library for leetcode problems and C++ solutions
+Combinations of leetcode and some algorithm related problems
+
+## C++ solutions
+

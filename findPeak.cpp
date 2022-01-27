@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -18,11 +19,16 @@ int arr[rows][columns] = {
    { 5023,  5129,  4822,  4872,  4794,  4862,  4245 },
 };
 
+vector<int> someVector = { 1, 2, 3, 1, 6, 9, 7 };
+
 void find_peaks(int arr[][columns]);
+int findPeakElement(vector<int> &nums);
 
 int main() {
     
     find_peaks(arr);
+    cout << endl;
+    findPeakElement(someVector);
 
     return 0;
 }
@@ -40,4 +46,22 @@ void find_peaks(int arr[][columns]) {
                 printf("(%d,%d)\n", i, j);
             }
         }
+}
+
+//this is for 1d array and runtime is O(log n)
+int findPeakElement(vector<int>& nums) {
+        int left = 0;
+        int right = nums.size()-1;
+        while(left < right)
+        {
+            int mid = left + (right - left) / 2;
+            if(nums[mid] < nums[mid+1])
+            {
+                left = mid+1;
+            } else {
+                right = mid;
+            }
+        }
+        cout << "Index: " << left << ", Number: " << nums[left] << endl;
+        return left;
 }
