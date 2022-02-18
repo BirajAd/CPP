@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <sstream>
 
 using namespace std;
 //{1,3,2,5}
@@ -20,7 +22,20 @@ int findMissing(vector<int> &anArray, int &len){
 }
 
 int main(){
-    vector<int> a = {1,3,2,5,4,7};
-    int l = a.size();
-    cout << findMissing(a, l);
+    stringstream ss;
+    string str;
+    vector<int> a;
+    getline(cin, str);
+    replace(str.begin(), str.end(), ',', ' ');
+    ss << str;
+
+    int x = 0;
+    while (ss >> x)
+    {
+        a.push_back(x);
+    }
+    int len;
+    cin >> len;
+
+    cout << findMissing(a, len);
 }
