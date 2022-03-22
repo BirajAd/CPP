@@ -12,11 +12,17 @@ int main() {
         long long int x, y;
         cin >> x;
         cin >> y;
-        if(x ^ y) {
-            long long int maxm = max(x, y);
-            cout << (maxm * maxm) - min(x, y) + 1 << "\n";
+        if(x > y) {
+            if(x%2!=0){
+                long long int maxm = max(x, y);
+                cout << maxm * maxm - min(x, y) - 1 << "\n";
+            } else {
+                long long int maxm = max(x, y);
+                cout << ((maxm-1) * (maxm-1)) + min(x, y) << "\n";
+            }
         } else {
-            cout << x * (y - 1) + 1 << "\n";
+            long long int maxm = max(x, y);
+            cout << maxm * maxm - min(x, y) + 1 << "\n";
         }
     }
 }
