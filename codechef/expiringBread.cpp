@@ -1,19 +1,13 @@
 #include <iostream>
-#include <string>
-#include <cmath>
+
 using namespace std;
 
 int main() {
-    string all;
-    getline(cin, all);
-    cout << all;
-    int len = all.size();
-    for(int i=0; i<ceil((double)len/2); i++) {
-        char temp = all[i];
-        all[i] = all[len-i-1];
-        all[len-i-1] = temp;
-        // cout << all[i] << " -> " << all[len-i-1] << "\n";
+    int t, n, m, k;
+    cin >> t;
+    for(int i=0; i<t; i++) {
+        cin >> n >> m >> k;
+        string ans = (((double)n/k) <= m) ? "Yes\n" : "No\n";
+        cout << ans;
     }
-    cout << " -> " << all << "\n";
-    return 0;
 }
