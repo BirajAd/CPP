@@ -3,9 +3,7 @@
 #include <cmath>
 using namespace std;
 
-int main() {
-    string all;
-    getline(cin, all);
+string reverseString(string &all) {
     cout << all;
     int len = all.size();
     for(int i=0; i<ceil((double)len/2); i++) {
@@ -15,5 +13,12 @@ int main() {
         // cout << all[i] << " -> " << all[len-i-1] << "\n";
     }
     cout << " -> " << all << "\n";
+    return all;
+}
+
+int main() {
+    string all;
+    getline(cin, all);
+    cout << reverseString(all) << "\n";
     return 0;
 }
