@@ -31,6 +31,6 @@ int findNthLargest(vector<int> a_list, int n)
 }
 
 int main(){
-    vector<int> a = {1,3, 9, 4, 5, 8, 9};
+    vector<int> a = {1, 3, 9, 4, 5, 8, 9};
     findNthLargest(a, 2);
 }

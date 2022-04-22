@@ -23,7 +23,12 @@ int main()
     int b = 5;
     cout << "a is at " << a << " b is at " << b << endl;
     swapp(a, b);
-    cout << "a is at " << a << " b is at " << b;
+    cout << "a is at " << a << " b is at " << b << "\n";
+
+    // defining pointer
+    int *my_p;
+    *my_p = 2;
+    cout << *my_p << " is at " << my_p << " address.";
     return 0;
 }
 
