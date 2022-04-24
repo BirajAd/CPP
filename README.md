@@ -11,4 +11,4 @@ all the programs can be run using g++ compiler
     ./a.out
 ```
 
-This repo is more about solving problems and learning rather than just leetcode solutions.
+This repo is more about solving problems and learning and not just leet-code, so may not always be perfect.
