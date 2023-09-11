@@ -3,6 +3,10 @@
 
 using namespace std;
 
+// when you pass by reference you actually make the change
+// to passed variable and you can choose to return the passed
+// variable
+
 int passByReference(int &a, int &b)
 {
     cout << a << ", " << b;
@@ -27,7 +31,12 @@ int main()
 
     // defining pointer
     int *my_p;
+    // assigning VALUE to the defined pointer
     *my_p = 2;
+    // you could also do my_p = &a, which will basically say my_p points to
+    // a's physical address, *my_p will de-reference the pointer and print the
+    // value, whereas if you did just printed my_p, it will print physical 
+    // address.
     cout << *my_p << " is at " << my_p << " address.";
     return 0;
 }

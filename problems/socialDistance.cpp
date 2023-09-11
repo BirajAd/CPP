@@ -9,48 +9,40 @@ using namespace std;
 //{1,0,0,0,1,0,0,1}
 //{0,0,0,1,0,0,1}
 int maxDistToClosest(vector<int> &seats){
-    int len = seats.size();
-    int maxm = 0;
-    int tempMax = 0;
-    int res = 0;
-    int startIndex = 0;
-    for(int i=0; i<len; i++){
-       bool start = true;
-       int endIndex = i;
-    //    cout << "i: " << i << "\n";
-       
-       if(i == len-1 && seats[i] != 1) {
-            // cout << tempMax << "\n";
-            if(tempMax+1 > maxm) {
-                maxm = tempMax;
-                res = i;
-            }
-        }
-        if(seats[i] == 0){
-           tempMax++;
-        //    cout << tempMax << "\n";
-        } else {
-           if(start && seats[0] != 1) {
-               maxm = max(maxm, tempMax);
-               res = 0;
-           }
-            else {
-               if(tempMax > maxm) {
-                    maxm = tempMax;
-                    res = floor((startIndex+endIndex)/2);
-                }
-           }
-        //    cout << startIndex << ", " << endIndex << "\n";
-           tempMax = 0;
-           start = false;
-           startIndex = endIndex;
-       } 
+  int len = seats.size();
+  int maxm = 0;
+  int tempMax = 0;
+  // to check if we are counting from first seats
+  bool firstSeat = true; 
+  int startIndex = 0;
+  for(int i=0; i<len; i++){
+    // first seat is empty
+    if(i == 0 && seats[i] == 0) {
+      tempMax++;
+    } else {
+      if(seats[i] == 1) {
+        // if seat is first or last we don't need
+        // to find middle seat to sit to maximize distance
+        tempMax = firstSeat ? tempMax : tempMax%2==0 ? tempMax/2 : tempMax/2+1;
+        // not counting from first once filled up seat is found
+        firstSeat = false;
+        maxm = max(tempMax, maxm);
+        tempMax = 0;
+      } else {
+        tempMax++;
+      }
+      if (i == len-1 && seats[i] == 0) {
+        // went to last but seat is empty then evaluate
+        maxm = max(tempMax, maxm);
+      }
     }
-    return res;
+  }
+  cout << "First or last?: " << firstSeat << "\n";
+  return maxm;
 }
 
 int main() {
-    vector<int> sample = {0,0,0,0,1,0,0,0,1,0,0,1,0,0,0};
-    cout << "result: " << maxDistToClosest(sample) << "\n\n";
-
+  // vector<int> sample = {0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0};
+  vector<int> sample = {1,0,0,0,0,1};
+  cout << maxDistToClosest(sample) << "\n\n";
 }
