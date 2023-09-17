@@ -17,51 +17,48 @@ using namespace std;
 //    print the second set in a similar way.
 
 // 1 2 3 4 5 6 7 8
-// this is a two pointer problem
-// sum(first+last) if result < (sum/2) -> --lastPointer and repeat
-// if result > (sum/2) -> ++firstPointer and repeat until you get sum/2
+// keep coming down from n until the sum is great enough that adding one more number 
+// from the remaining set is enough
 
 int main() {
   ll int n;
   cin >> n;
   ll int sum = n*(n+1)/2;
   if(sum%2!=0) {
-    cout << "NO";
+    cout << "NO\n";
   } else {
     // this is the sum one set needs to have
+    cout << "YES\n";
     ll int requiredSum = sum/2;
-    vector<int> a = { 1 };
-    ll int total = 1;
-    ll int first = 1;
-    ll int last = n;
-    while(requiredSum >= total) {
-      if(total == requiredSum) {
-        break;
-      }
-      if(total+last <= requiredSum) {
-        total += last;
-        a.push_back(last);
-        last--;
-      } else {
-        total += first; 
-        if(first != 1) a.push_back(first);
-        first++;
-      }
+    vector<int> a = {};
+    ll int total = 0;
+    // keep coming down from top until you find a number that if added equals to required sum
+    while(requiredSum-total >= n) {
+      total += n;
+      a.push_back(n);
+      n--;
     }
-    cout << "YES\n" << a.size() << "\n";
+    // cout << requiredSum-total << " " << n << "\n";
+    // ll int aSum = 0;
+    // ll int bSum = 0;
+    ll int required = requiredSum-total;
+    (required > 0) ? cout << a.size()+1 << "\n" : cout << a.size() << "\n";
     for(auto x: a) {
+      // aSum += x;
       cout << x << " ";
     }
-    cout << "\n" << n-a.size() << "\n";
-    // if(first == last) { // then there is only one number
-    //   cout << first << "\n";
-    // }
-    if(first == 1) first += 1;
-    for(ll int i=first; i<=last; i++) {
-      cout << i << " ";
+    if(required > 0) cout << required << "\n";
+    // aSum += required;
+    (required > 0) ? cout << n-1 << "\n" : cout << n << "\n";
+    
+    for(ll int i=1; i<=n; i++) {
+      if (i != required) {
+        // bSum += i;
+        cout << i << " ";
+      }
     }
     cout << "\n";
-    cout << "\n" << first << "<====>" << last << "\n";
+    // cout << "A: " << aSum << " B: " << bSum << "\n";
   }
   return 0;
 }
