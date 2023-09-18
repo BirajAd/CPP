@@ -3,6 +3,7 @@
 // we should use unordered_map for it to be hashmap
 #include <map> 
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -15,16 +16,17 @@ int main() {
   string variable = "raj";
   // a.count(variable) > 0 ? cout << a[variable] : cout << "don't exist";
   vector<int> b = {1,2,3};
-  vector<int> *c = &b;
+  vector<int> &c = b;
   b.push_back(4);
-  cout << "b: \n";
+  cout << "b: ";
   for(auto x: b) {
     cout << x << " ";
   }
   cout << "\n";
 
-  cout << "c: \n";
-  for(auto x: *c) {
+  cout << "c: ";
+  for(auto x: c) {
     cout << x << " ";
   }
+  cout << "\n";
 }
