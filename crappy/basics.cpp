@@ -7,6 +7,11 @@
 
 using namespace std;
 
+vector<int> addSome(vector<int> a) {
+  a.push_back(5);
+  return a;
+}
+
 int main() {
   map<string, string> a;
   a["biraj"] = "user";
@@ -29,4 +34,12 @@ int main() {
     cout << x << " ";
   }
   cout << "\n";
+  vector<int> d = { 1,2,3,4 };
+  addSome(d);
+  cout << "c: ";
+  for(auto x: d) {
+    cout << x << " ";
+  }
+  cout << "\n";
+
 }
