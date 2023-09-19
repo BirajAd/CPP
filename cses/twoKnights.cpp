@@ -20,11 +20,11 @@ ll int combination(ll int n, ll int r) {
 
 int main() {
   // Explanation:
-  // 2*3 box count = (n-2)*(n-1)
+  // 3*2 box count = (n-2)*(n-1)
   // when counting vertically => n-2
   // when counting horizontally => n-1
 
-  // 3*2 box count = (n-2)*(n-1)
+  // 2*3 box count = (n-2)*(n-1)
   // when counting vertically => n-1
   // when counting horizontally => n-2
 
