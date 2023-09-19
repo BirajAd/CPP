@@ -6,6 +6,7 @@ def compare(user_output, correct_output):
   if(user_data.status_code != 200):
     return "Something went wrong"
   user_data = user_data.text.split("\n")
+  print(user_data)
   
   correct_data = requests.get(correct_output)
   if(correct_data.status_code != 200):
@@ -26,5 +27,5 @@ def compare(user_output, correct_output):
       c = sum([int(i) for i in c])
       print("Sum: ", u, c)
 
-compare("https://cses.fi/file/d3a4ceb9eac0dbef43c092350ddcd3cd9cf95447b0ed2ab65ec906e85c73072b/2/1/", "https://cses.fi/file/3b8780e7fb0fd7b2a3449a530f4dd293922711c03d4695220b7f045242f08e95/3/1/")
+compare("https://cses.fi/file/3ae701a5479be60e446124b08c44f332988b5e28b7bb2ccbd5389b29c39a81c6/3/1/", "https://cses.fi/file/fb96e3429c424c84ac0839d1533e5339650e1a922e95edc9798e979b219d90a8/2/1/")
   
