@@ -1,7 +1,7 @@
 #include <iostream>
 // this is balanced binary tree and not a hash map
 // we should use unordered_map for it to be hashmap
-#include <map> 
+#include <map>
 #include <string>
 #include <vector>
 #include <set>
@@ -15,9 +15,9 @@ vector<int> addSome(vector<int> a) {
 }
 
 int main(int argc, char *argv[]) {
-  ifstream myFile;
   string a;
   if(argc > 1) {
+    ifstream myFile;
     string fileName = argv[1];
     myFile.open(fileName);
     myFile >> a;
@@ -67,16 +67,20 @@ int main(int argc, char *argv[]) {
     }
     if(totalCount == 1) {
       if(a.size()%2 == 0) {
+        // cout << "NO Here"<< "\n";
         cout << "NO SOLUTION\n";
         return 0;
       } else {
         // cout << "inserted " << x << " at " << a.size()/2 << "\n";
         finalString[a.size()/2] = x;
+        chars[x]--;
       }
       if(oddFound) {
+        // cout << "Odd found" << " AT: " << x << " Count: " << chars[x] << "\n";
         cout << "NO SOLUTION\n";
         return 0;
       }
+      // cout << "Here" << " AT: " << x << "Count: " << chars[x] << "\n";
       oddFound = true;
     }
   }
