@@ -18,5 +18,5 @@ I have one header file (for now), in case need to be used, include that with an 
     g++ std=c++17 program.cpp -I headers/
 ```
 
-This repo is more about solving problems and learning and not just leet-code, so may not always be perfect.
+This repo is more about solving problems and learning, so may not always be perfect.
 
