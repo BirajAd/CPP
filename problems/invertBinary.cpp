@@ -58,23 +58,33 @@ void orderTraversal(TreeNode* n)
         if(curr->left != NULL) q.push(curr->left);
         if(curr->right != NULL) q.push(curr->right);
     }
+    cout << "\n";
 }
 
 
 //{5,3,46,7,9,8,7,2}
 TreeNode* arrayToBinary(vector<int> aVector)
 {
-    queue<TreeNode*> q;
     TreeNode* root = new TreeNode(aVector[0]);
+    queue<TreeNode*> q;
     q.push(root);
-    for(int i=1; i<aVector.size()-1; i+=2)
+    for(int i=0; i<aVector.size(); i++)
     {
-        TreeNode* temp = q.front();
-        q.pop();
-        temp->left = new TreeNode(aVector[i]);
-        if(temp->left != NULL) q.push(temp->left); 
-        temp->right = new TreeNode(aVector[i+1]);
-        if(temp->right != NULL) q.push(temp->right);
+        TreeNode* curr = q.front(); q.pop();
+        if(2*i+1 < aVector.size()) {
+            curr->left = new TreeNode(aVector[2*i+1]);
+            q.push(curr->left);
+        } else {
+            // no need to go further
+            break;
+        }
+        if(2*i+2 < aVector.size()) {
+            curr->right = new TreeNode(aVector[2*i+2]);
+            q.push(curr->right);
+        } else {
+            // no need to go further
+            break;
+        }
     }
     return root;
 }
@@ -84,18 +94,12 @@ int main()
     TreeNode* a = new TreeNode(9);
     a->left = new TreeNode(4);
     a->right = new TreeNode(15);
-    a->left->left = new TreeNode(2);
-    a->left->right = new TreeNode(5);
-    a->left->right->left = new TreeNode(1);
-    a->left->right->right = new TreeNode(3);
-    a->right->left = new TreeNode(10);
-    a->right->right = new TreeNode(18);
-    a->right->right->right = new TreeNode(20);
     // orderTraversal(a);
     // TreeNode* b = invertTree(a);
     vector<int> vect = {9,4,15,2,5,1,3,10,18,20};
     TreeNode* result = arrayToBinary(vect);
-    cout << result->right->right->val << endl;
+    orderTraversal(result);
+    // cout << result->left->right->val << endl;
 
     return 0;
 };

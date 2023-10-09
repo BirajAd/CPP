@@ -3,14 +3,20 @@
 
 using namespace std;
 
-set<string> permutate(string prefix, string suffix, set<string> &perms) {
+set<string> perms;
+
+void permutate(string prefix, string suffix) {
+  // cout << prefix << " ==== " << suffix << "\n";
   if (suffix.length() == 0) {
     perms.insert(prefix);
+    cout << "--------------" << "\n";
+    return;
   }
   for(int i=0; i<suffix.length(); i++) {
-    permutate(prefix + suffix[i], suffix.substr(0, i) + suffix.substr(i+1), perms);
+    // cout << prefix + suffix[i] << " ==== " << suffix.substr(0, i) + suffix.substr(i+1) << "\n";
+    cout << "prefix: " << prefix << " (" << i << ")" << " suffix: " << suffix << "\n";
+    permutate(prefix + suffix[i], suffix.substr(0, i) + suffix.substr(i+1));
   }
-  return perms;
 }
 
 int main() {
@@ -18,10 +24,9 @@ int main() {
   cin >> word;
   // r: times certain letter was repeated
   // formula: word.size()! / (r1!)*(r2!)*(r3!)
-  set<string> perms = {};
-  permutate("", word, perms);
+  permutate("", word);
   cout << perms.size() << "\n";
-  // for(auto w: perms) {
-  //   cout << w << "\n";
-  // }
+  for(auto w: perms) {
+    cout << w << "\n";
+  }
 }
