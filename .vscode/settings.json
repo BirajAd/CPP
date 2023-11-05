@@ -3,5 +3,9 @@
         "vector": "cpp",
         "iostream": "cpp",
         "iosfwd": "cpp"
-    }
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "python.formatting.provider": "none"
 }

@@ -60,3 +60,14 @@ Node* arrayToBinary(vector<int> aVector)
     }
     return root;
 }
+
+int height(Node* node) {
+
+//   if(node != NULL) cout << node->val << "\n";
+  if (node == NULL) return -1;
+
+  int lHeight = height(node->left);
+  int rHeight = height(node->right);
+
+  return max(lHeight, rHeight) + 1;
+}
