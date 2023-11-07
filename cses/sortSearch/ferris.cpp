@@ -23,17 +23,13 @@ int main() {
 
   sort(ch, ch+n);
 
-  for(auto x: ch) {
-    cout << x << " ";
-  }
-  cout << "\n";
+  // for(auto x: ch) {
+  //   cout << x << " ";
+  // }
+  // cout << "\n";
 
   ll ans = 0;
   for(ll i=0; i<n; i++) {
-      // for(auto x: ch) {
-      //   cout << x << " ";
-      // }
-      // cout << "\n";
     if(ch[i] == -1) {
       continue; // picked up already
     }
@@ -42,8 +38,8 @@ int main() {
       continue;
     }
     ll sum = ch[i];
-    ll lastIndex = i;
-    for(ll j=n-1; j>=i ;j--) {
+    ll lastIndex = n-1;
+    for(ll j=lastIndex; j>=i ;j--) {
       if(i == j) {
         // cout << ch[j] << " only\n";
         ans++;
@@ -51,6 +47,7 @@ int main() {
       }
       ll sc = ch[j];
       if(sc != -1) {
+        lastIndex = j-1;
         if(sum+sc > x) {
           // cout << "comp: " << sum << " and " << ch[j] << "\n";
           continue;
@@ -58,10 +55,6 @@ int main() {
           ans++;
           // cout << ch[i] << " + " << ch[j] << "\n";
           ch[j] =-1;
-          // for(auto x: ch) {
-          //   cout << x << " ";
-          // }
-          // cout << "\n";
           break;
         } else if(sum+ch[j] < x) {
           ans++;
