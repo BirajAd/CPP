@@ -2,32 +2,34 @@
 #include <iostream>
 #include <algorithm>
 
+#define ll long long
+
 using namespace std;
 
 int main() {
 
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr);
+	// ios::sync_with_stdio(false);
+	// cin.tie(nullptr);
 
-	freopen("input.in", "r", stdin);
-	freopen("output.out", "w", stdout);
+	// freopen("input.in", "r", stdin);
+	// freopen("output.out", "w", stdout);
 
-  int n, x;
+  ll n, x;
   cin >> n >> x;
-  int ch[n];
-  for(int i=0; i<n; i++) {
+  ll ch[n];
+  for(ll i=0; i<n; i++) {
     cin >> ch[i];
   }
 
   sort(ch, ch+n);
 
-  // for(auto x: ch) {
-  //   cout << x << " ";
-  // }
-  // cout << "\n";
+  for(auto x: ch) {
+    cout << x << " ";
+  }
+  cout << "\n";
 
-  int ans = 0;
-  for(int i=0; i<n; i++) {
+  ll ans = 0;
+  for(ll i=0; i<n; i++) {
       // for(auto x: ch) {
       //   cout << x << " ";
       // }
@@ -39,40 +41,36 @@ int main() {
       ans++;
       continue;
     }
-    int sum = ch[i];
-    int lastIndex = i;
-    for(int j=i+1; j<n ;j++) {
-      // cout << "cool" << "\n";
-      if(ch[j] != -1) {
-        if(sum == x) {
-          // cout << sum << "\n";
-          ans++;
-          ch[i] = -1;
-          break;
-        } else if(sum+ch[j] < x) {
+    ll sum = ch[i];
+    ll lastIndex = i;
+    for(ll j=n-1; j>=i ;j--) {
+      if(i == j) {
+        // cout << ch[j] << " only\n";
+        ans++;
+        continue;
+      }
+      ll sc = ch[j];
+      if(sc != -1) {
+        if(sum+sc > x) {
           // cout << "comp: " << sum << " and " << ch[j] << "\n";
-          lastIndex = j;
-        } else if(sum+ch[j] == x) {
+          continue;
+        } else if(sum+sc == x) {
           ans++;
           // cout << ch[i] << " + " << ch[j] << "\n";
-          ch[i] =-1;
           ch[j] =-1;
+          // for(auto x: ch) {
+          //   cout << x << " ";
+          // }
+          // cout << "\n";
           break;
-        } else if(sum+ch[j] > x) {
+        } else if(sum+ch[j] < x) {
           ans++;
           // cout << ch[i] << " big " << ch[j] << "\n";
-          ch[i] = -1;
+          ch[j] = -1;
           break;
         }
       }
 
-      if(j == n-1) {
-        ans++;
-        // cout << ch[i] << " last " << ch[lastIndex] << "\n";
-        ch[i] =-1;
-        ch[lastIndex] =-1;
-        break;
-      }
     }
 
   }
