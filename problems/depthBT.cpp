@@ -57,8 +57,9 @@ int depthWithStack(Node* root) {
 };
 
 int main() {
-  Node* a = arrayToBinary({5, 3, 46, 7, 9, 8, 7, 2, 4, 10, 12, 2, 3, 1, 2, 5, 7});
+  Node* a = arrayToBinary({2, 3, 4, 5, 6, 7, 8});
   // int ab[] = { 1, 2, 3, NULL };
-  cout << depthWithStack(a) << "\n";
+  // cout << depthWithStack(a) << "\n";
   // orderTraversal(a);
+  cout << height(a) << "\n";
 }

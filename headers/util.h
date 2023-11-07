@@ -69,5 +69,7 @@ int height(Node* node) {
   int lHeight = height(node->left);
   int rHeight = height(node->right);
 
+//   cout << "root: " << node->val << " |=> " << lHeight << " | " << rHeight << "\n";
+
   return max(lHeight, rHeight) + 1;
 }
