@@ -11,7 +11,7 @@ int main () {
     // myfile.open("myfile.txt");
     // myfile << "this is first file I wrote with C++.\n";
     // myfile.close();
-    Node* a = arrayToBinary({5, 3, 46, 7, 9, 8, 7, 2});
+    Node* a = arrayToBinary({5, 3, 46, 7, 9, NULL, 8, 7, 2});
     orderTraversal(a);
 
     return 0;
