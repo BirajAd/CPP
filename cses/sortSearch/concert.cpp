@@ -28,9 +28,9 @@ int main() {
     cin >> c[i];
   }
 
-  set<int>::iterator it;
+  set<int>::iterator ub;
   for(int x: c) {
-    set<int>::iterator ub = t.upper_bound(x);
+    ub = t.upper_bound(x);
 
     if(ub == t.begin()) {
       cout << "-1\n";
