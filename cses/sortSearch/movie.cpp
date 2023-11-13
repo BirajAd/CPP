@@ -1,14 +1,8 @@
 #include <iostream>
 #include <vector>
-#include <set>
+#include <algorithm>
 
 using namespace std;
-
-struct cmp {
-  bool operator()(const pair<int, int> &a, const pair<int, int> &b) const { 
-    return a.first < b.first;
-  }
-};
 
 int main() {
 
@@ -20,40 +14,31 @@ int main() {
 
   int x;
   cin >> x;
-  multiset<pair<int, int>, cmp> v;
+  vector<pair<int, int>> v(x);
   pair<int, int> a;
   int b, c;
   for(int i=0; i<x; i++) {
     cin >> b >> c;
     a = {b, c};
-    v.insert(a);
+    v[i] = a;
   }
 
-  // cout << "\n";
-  // for(auto x: lT) {
-  //   cout << x << "\n"; // x.first << " " << x.second << "\n";
-  // }
-  // cout << "\n";
-
-  auto firstC = v.begin();
+  auto firstC = v[0];
   int Max = 1;
-  pair<int, int> start = *firstC;
-  int lastEnd = start.second;
+  int lastEnd = firstC.second;
 
   // cout << "\n";
+  sort(v.begin(), v.end());
 
-  while(firstC != v.end()) {
-    pair<int, int> curr = *firstC;
-    firstC++;
+  for(int i=0; i<x; i++) {
+    pair<int, int> curr = v[i];
     if(curr.first >= lastEnd) {
       lastEnd = curr.second;
       Max++;
-      // cout << curr.first << " " << curr.second << " max: " << Max << "\n";
     }
     if(curr.second < lastEnd) {
       // better one
       lastEnd = curr.second;
-      // cout << "better: " << curr.first << " " << curr.second << " max: " << Max << "\n";
     }
   }
 
