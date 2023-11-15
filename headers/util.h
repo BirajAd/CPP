@@ -36,7 +36,7 @@ void orderTraversal(Node *n) {
 }
 
 //{5,3,46,7,9,8,7,2}
-Node *arrayToBinary(vector<int> aVector) {
+Node *arrayToBinary(vector<int> &aVector) {
   Node *root = new Node(aVector[0]);
   int len = aVector.size();
   queue<Node *> q;
@@ -81,4 +81,14 @@ int height(Node *node) {
   //   cout << "root: " << node->val << " |=> " << lHeight << " | " << rHeight << "\n";
 
   return max(lHeight, rHeight) + 1;
+}
+
+void inOrderTraversal(Node* n, vector<Node*> &v) {
+  if(n == NULL) {
+    return;
+  }
+  inOrderTraversal(n->left, v);
+  // cout << n->val << " ";
+  v.push_back(n);
+  inOrderTraversal(n->right, v);
 }
