@@ -40,7 +40,42 @@ def bubble_sort(arr):
   
   return arr
 
+# 5 3 1 2 4
+def merge_sort(arr):
+  n = len(arr)
+  if n <= 1:
+    return arr
+  mid = n // 2
+  a, b = arr[:mid], arr[mid:]
+  # print(f"Dividing: \n{a}\t{b}")
+  a = merge_sort(a)
+  b = merge_sort(b)
+  # print(f"Dividing: \n{a}\t{b}")
+  result_list = []
+  left_ptr, right_ptr = 0, 0
+
+  # mid -> upto the mid
+  # n - mid -> leftover element count.
+  # e.g [5,3], [1,2,4]
+  # mid = 2, n-mid = 3 (total elements in second half)
+  while left_ptr < mid or right_ptr < (n - mid):
+    # left array is empty
+    if left_ptr == mid:
+      result_list.append(b[right_ptr])
+      right_ptr += 1
+    # right array is empty
+    elif right_ptr == (n - mid):
+      result_list.append(a[left_ptr])
+      left_ptr += 1
+    elif a[left_ptr] < b[right_ptr]:
+      result_list.append(a[left_ptr])
+      left_ptr += 1
+    else:
+      result_list.append(b[right_ptr])
+      right_ptr += 1
+
+  return result_list
 
 
 inp = input("copy paste your list ")
-bubble_sort(list(map(int, inp.split(","))))
+print(merge_sort(list(map(int, inp.split(",")))))
