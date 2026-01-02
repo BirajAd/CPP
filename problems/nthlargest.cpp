@@ -1,9 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include <vector>
-#include <queue>
-#include <iostream>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 int findNthLargest(vector<int> a_list, int n) {
@@ -19,7 +14,8 @@ int findNthLargest(vector<int> a_list, int n) {
     }
   }
 
-  for(int i=0; i<n; i++) {
+  n = n-1;
+  while(n--) {
     pq.pop();
   }
 
@@ -29,5 +25,6 @@ int findNthLargest(vector<int> a_list, int n) {
 
 int main(){
     vector<int> a = {1, 3, 9, 4, 5, 8, 9};
+    cout << sqrt(4) << "\n";
     findNthLargest(a, 2);
 }
